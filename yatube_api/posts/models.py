@@ -5,9 +5,10 @@ User = get_user_model()
 
 
 class Group(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(max_length=200, unique=True)
-    description = models.TextField()
+    """Модель групп."""
+    title = models.CharField(max_length=200, verbose_name='Заголовок')
+    slug = models.SlugField(max_length=200, unique=True, verbose_name='индекс')
+    description = models.TextField(verbose_name='Описание')
 
     class Meta:
         verbose_name = "Группа"
@@ -18,8 +19,9 @@ class Group(models.Model):
 
 
 class Post(models.Model):
+    """Модель постов."""
     text = models.TextField()
-    pub_date = models.DateTimeField('Дата публикации', auto_now_add=True)
+    pub_date = models.DateTimeField(verbose_name='Дата публикации', auto_now_add=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='posts')
     image = models.ImageField(
@@ -37,13 +39,14 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
+    """Модель комментраиев."""
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='comments')
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
     created = models.DateTimeField(
-        'Дата добавления', auto_now_add=True, db_index=True)
+        verbose_name='Дата добавления', auto_now_add=True, db_index=True)
 
     class Meta:
         ordering = ('-created',)
@@ -55,15 +58,20 @@ class Comment(models.Model):
 
 
 class Follow(models.Model):
+    """Модель подписок."""
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
+        null=True,
         related_name='follower',
+        verbose_name='Пользователь',
     )
     following = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
+        null=True,
         related_name='following',
+        verbose_name='Автор',
     )
 
     class Meta:

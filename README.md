@@ -14,32 +14,32 @@
 </blockquote>
 
 <i><b>Технологии</i></b>
-<blockquote>
+
 ☑ Python 3.9.10 <br> 
 ☑ Django REST framework
-</blockquote>
+
 
 <i><b>Запуск проекта в dev-режиме:</i></b><br> 
 ☑ Клонируйте проект с GitHub:</li>
-    <blockquote>
+
       https://github.com/RostIiIslav/api_final_yatube.git
-    </blockquote>  
+ 
 ☑ Создайте и активируйте виртуальное окружение:</li>
-    <blockquote>
+
       python -m venv venv<br> 
       source venv/Scripts/activate 
-    </blockquote>  
+ 
 ☑ Установите зависимости из файла requirements.txt
 ☑ Обновите pip!</li>
-    <blockquote>
+
       pip install -r requirements.txt
       python -m pip install --upgrade pip
-    </blockquote>
+
 ☑ Применяем миграции:</li>
-    <blockquote>
+
       python yatube_api/manage.py makemigrations
       python yatube_api/manage.py migrate 
-    </blockquote>
+
 
 
 Автор: Рыманов Ростислав

@@ -18,7 +18,6 @@ class PostSerializer(serializers.ModelSerializer):
             'image',
             'group',
         )
-        read_only_fields = ('author',)
         model = Post
 
 
@@ -30,8 +29,8 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = ('id', 'author', 'text', 'created', 'post')
-        read_only_fields = ('author', 'post')
         model = Comment
+        read_only_fields = ('post',)
 
 
 class GroupSerializer(serializers.ModelSerializer):

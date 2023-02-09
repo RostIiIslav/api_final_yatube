@@ -20,14 +20,15 @@ class Group(models.Model):
 
 class Post(models.Model):
     """Модель постов."""
+
     text = models.TextField()
-    pub_date = models.DateTimeField(verbose_name='Дата публикации', auto_now_add=True)
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='posts')
-    image = models.ImageField(
-        upload_to='posts/', null=True, blank=True)
+    pub_date = models.DateTimeField(verbose_name="Дата публикации",
+                                    auto_now_add=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name="posts")
+    image = models.ImageField(upload_to="posts/", null=True, blank=True)
     group = models.ForeignKey(
-        Group, null=True, on_delete=models.SET_NULL, related_name='posts'
+        Group, null=True, on_delete=models.SET_NULL, related_name="posts"
     )
 
     class Meta:
